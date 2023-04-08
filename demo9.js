@@ -20,6 +20,8 @@ var val = form.querySelector('#name').value
 var mval = document.getElementById('number').value
 //get email
 var eval = document.getElementById('email').value
+list.id=eval
+
 var arr=[val,mval,eval];
 // add data to local storage
 localStorage.setItem(eval,arr);
@@ -32,7 +34,7 @@ list.append(document.createTextNode(newString))
 // create button 
 var btn = document.createElement('button')
 btn.className="btn btn-danger btn-sm float-right delete"
-btn.append(document.createTextNode('x'))
+btn.append(document.createTextNode('Delete'))
 list.append(btn)
 // done with button 
 
@@ -46,6 +48,8 @@ function removeList(e) {
 if(e.target.classList.contains('delete')){
     if(confirm('are you sure?')){
 e.target.parentElement.remove()
+localStorage.removeItem(e.target.parentElement.id)
+//localStorage.removeItem()
 // or // li.removeChild(e.target.parentElement)
     }
 }
